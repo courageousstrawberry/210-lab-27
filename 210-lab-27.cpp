@@ -11,6 +11,7 @@ int menu();
 int main() {
     // declarations
     map<string, tuple<int, string, string>> villagers;
+    int choice = 0;
 
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
@@ -39,12 +40,12 @@ int main() {
     }
 
     // delete an element
-    villagerColors.erase("Raymond");
+    villagers.erase("Raymond");
 
     // search for an element using .find() to avoid errors
     string searchKey = "Audie";
-    auto it = villagerColors.find(searchKey);
-    if (it != villagerColors.end()) {  // the iterator points to beyond the end of the map
+    auto it = villagers.find(searchKey);
+    if (it != villagers.end()) {  // the iterator points to beyond the end of the map
                                        // if searchKey is not found
         cout << "\nFound " << searchKey << "'s favorite colors: ";
         for (auto color : it->second)  // range loop to traverse the value/vector
@@ -54,11 +55,45 @@ int main() {
         cout << endl << searchKey << " not found." << endl;
 
     // report size, clear, report size again to confirm map operations
-    cout << "\nSize before clear: " << villagerColors.size() << endl;
-    villagerColors.clear();
-    cout << "Size after clear: " << villagerColors.size() << endl;
+    cout << "\nSize before clear: " << villagers.size() << endl;
+    villagers.clear();
+    cout << "Size after clear: " << villagers.size() << endl;
 
-    while()
+    while(choice !=6) {
+        choice = menu();
+        switch(choice) {
+            case 1: {
+                string name;
+                int level;
+                string species;
+                string catchphrase;
+                // Add villager
+                cout << "\nVillager name: ";
+                cin >> name;
+                cout << "\nFriendship level: ";
+                cin >> level;
+                cout << "\nSpecies: ";
+                cin >> species;
+                cout << "\nCatchphrase: ";
+                getline(cin, catchphrase);
+
+                villagers.insert({name, make_tuple(level, species, catchphrase)});
+
+                cout << name << " added." << endl;
+                break;
+            }
+            case 2:
+                // Delete Villager
+                break;
+            case 3:
+                // Increase Friendship
+                break;
+            case 4:
+                // Decrease Friendship
+            case 5:
+                // Search for villager
+        }
+    }
     return 0;
 }
 
@@ -70,7 +105,7 @@ int menu() {
     cout << "4. Decrease Friendship" << endl;
     cout << "5. Search for Villager" << endl;
     cout << "6. Exit" << endl;
-    cout << "Your choice: ";
+    cout << "Enter choice: ";
 
     while(!(cin>>user_choice)) {
         cin.clear();
