@@ -15,8 +15,8 @@ int main() {
 
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
-    villagers["Audie"] = make_tuple(10, "Armadillo", "Let's climb together!");
-    villagers["Raymond"] = make_tuple(3, "Cat", "I don't need any humans.");
+    villagers["Audie"] = make_tuple(10, "Armadillo", "Let's dig together!");
+    villagers["Raymond"] = make_tuple(3, "Cat", "I'm sleepy.");
     villagers.insert({"Marshal", make_tuple(7, "Frog", "Eat that fly!")});
 
     while(choice !=6) {
