@@ -19,16 +19,6 @@ int main() {
     villagers["Raymond"] = make_tuple(3, "Cat", "I don't need any humans.");
     villagers.insert({"Marshal", make_tuple(7, "Frog", "I want that fly!")});
 
-    // access the map using a range-based for loop
-
-    cout << "Villager details:" << endl;
-    for (auto& pair : villagers) {
-        cout << pair.first << " [";
-        cout << get<0>(pair.second) << ", " << get<1>(pair.second) << ", " << get<2>(pair.second) << "]" << endl;;
-        cout << endl;
-    }
-
-
     // access the map using iterators
     cout << "\nVillagers and their favorite colors (iterators):" << endl;
     for (map<string, vector<string>>::iterator it = villagers.begin(); 
@@ -78,20 +68,64 @@ int main() {
                 villagers.insert({name, make_tuple(level, species, catchphrase)});
 
                 cout << name << " added." << endl;
+
+                // Display all villagers
+                cout << "Villager details:" << endl;
+                for (auto& pair : villagers) {
+                    cout << pair.first << " [";
+                    cout << get<0>(pair.second) << ", " << get<1>(pair.second) << ", " << get<2>(pair.second) << "]";
+                    cout << endl;
+                }
                 break;
             }
-            case 2:
+            case 2: {
                 // Delete Villager
-                villagers.erase("Raymond");
+                string name;
+                cout << "Enter a villager's name to delete: ";
+                cin >> name;
+                villagers.erase(name);
+
+                // Display all villagers
+                cout << "Villager details:" << endl;
+                for (auto& pair : villagers) {
+                    cout << pair.first << " [";
+                    cout << get<0>(pair.second) << ", " << get<1>(pair.second) << ", " << get<2>(pair.second) << "]";
+                    cout << endl;
+                }
                 break;
+            }
             case 3:
                 // Increase Friendship
+
+                // Display all villagers
+                cout << "Villager details:" << endl;
+                for (auto& pair : villagers) {
+                    cout << pair.first << " [";
+                    cout << get<0>(pair.second) << ", " << get<1>(pair.second) << ", " << get<2>(pair.second) << "]";
+                    cout << endl;
+                }
                 break;
             case 4:
                 // Decrease Friendship
+
+                // Display all villagers
+                cout << "Villager details:" << endl;
+                for (auto& pair : villagers) {
+                    cout << pair.first << " [";
+                    cout << get<0>(pair.second) << ", " << get<1>(pair.second) << ", " << get<2>(pair.second) << "]";
+                    cout << endl;
+                }
                 break;
             case 5:
                 // Search for villager
+
+                // Display all villagers
+                cout << "Villager details:" << endl;
+                for (auto& pair : villagers) {
+                    cout << pair.first << " [";
+                    cout << get<0>(pair.second) << ", " << get<1>(pair.second) << ", " << get<2>(pair.second) << "]";
+                    cout << endl;
+                }
                 break;
         }
     }
