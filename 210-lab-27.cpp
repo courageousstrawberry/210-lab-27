@@ -59,7 +59,9 @@ int main() {
                 cout << "\nVillager name: ";
                 cin >> name;
                 cout << "\nFriendship level: ";
-                cin >> level;
+                while (!(cin >> level) || level < 0 || level > 10) {
+                    cout << "\nInvalid friendship level. Enter an integer 0-10: ";
+                }
                 cout << "\nSpecies: ";
                 cin >> species;
                 cout << "\nCatchphrase: ";
@@ -96,6 +98,20 @@ int main() {
             }
             case 3:
                 // Increase Friendship
+                string name;
+                cout << "Enter name of villager to decrease friendship: ";
+                cin >> name;
+
+                auto it = villagers.find(name);
+                if (it != villagers.end()) {
+                    int& friendship = get<0>(it->second);
+                    if ((friendship + 1) <= 10){
+                        friendship++;
+                    }
+                }
+                else {
+                    cout << "Villager not found!" << endl;
+                }
 
                 // Display all villagers
                 cout << "Villager details:" << endl;
