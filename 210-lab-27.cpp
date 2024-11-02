@@ -28,20 +28,22 @@ int main() {
                 string species;
                 string catchphrase;
                 // Add villager
-                cout << "\nVillager name: ";
+                cout << "Villager name: ";
                 cin >> name;
-                cout << "\nFriendship level: ";
+                cout << "Friendship level: ";
                 while (!(cin >> level) || level < 0 || level > 10) {
                     cout << "\nInvalid friendship level. Enter an integer 0-10: ";
                 }
-                cout << "\nSpecies: ";
+                cout << "Species: ";
                 cin >> species;
-                cout << "\nCatchphrase: ";
+                cin.ignore();
+                cout << "Catchphrase: ";
                 getline(cin, catchphrase);
 
                 villagers.insert({name, make_tuple(level, species, catchphrase)});
 
                 cout << name << " added." << endl;
+                cout << endl;
 
                 // Display all villagers
                 cout << "Villager details:" << endl;
@@ -144,6 +146,7 @@ int main() {
                 break;
             }
         }
+        cout << endl;
     }
     return 0;
 }
@@ -158,7 +161,7 @@ int menu() {
     cout << "6. Exit" << endl;
     cout << "Enter choice: ";
 
-    while(!(cin>>user_choice)) {
+    while(!(cin>>user_choice) || user_choice > 6 || user_choice < 1) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "\nInvalid input. Enter a number 1-6: ";
