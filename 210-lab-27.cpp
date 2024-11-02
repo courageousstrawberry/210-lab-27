@@ -96,10 +96,10 @@ int main() {
                 }
                 break;
             }
-            case 3:
+            case 3: {
                 // Increase Friendship
                 string name;
-                cout << "Enter name of villager to decrease friendship: ";
+                cout << "Enter name of villager to increase friendship: ";
                 cin >> name;
 
                 auto it = villagers.find(name);
@@ -121,8 +121,23 @@ int main() {
                     cout << endl;
                 }
                 break;
-            case 4:
+            }
+            case 4: {
                 // Decrease Friendship
+                string name;
+                cout << "Enter name of villager to decrease friendship: ";
+                cin >> name;
+
+                auto it = villagers.find(name);
+                if (it != villagers.end()) {
+                    int& friendship = get<0>(it->second);
+                    if ((friendship - 1) >= 0){
+                        friendship--;
+                    }
+                }
+                else {
+                    cout << "Villager not found!" << endl;
+                }
 
                 // Display all villagers
                 cout << "Villager details:" << endl;
@@ -132,8 +147,20 @@ int main() {
                     cout << endl;
                 }
                 break;
-            case 5:
+            }
+            case 5: {
                 // Search for villager
+                string name;
+                cout << "Enter the name of the villager to search: ";
+                cin >> name;
+
+                auto it = villagers.find(name);
+                if (it != villagers.end()) {
+                    cout << "\nVillager found!" << endl;
+                }
+                else {
+                    cout << "Villager not found." << endl;
+                }
 
                 // Display all villagers
                 cout << "Villager details:" << endl;
@@ -143,6 +170,7 @@ int main() {
                     cout << endl;
                 }
                 break;
+            }
         }
     }
     return 0;
