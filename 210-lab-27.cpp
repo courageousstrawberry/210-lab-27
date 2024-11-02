@@ -2,10 +2,11 @@
 #include <map>
 #include <vector>
 #include <tuple>
+#include <limits>
 
 using namespace std;
 
-void add_villager();
+int menu();
 
 int main() {
     // declarations
@@ -25,7 +26,7 @@ int main() {
         cout << endl;
     }
 
-/*
+
     // access the map using iterators
     cout << "\nVillagers and their favorite colors (iterators):" << endl;
     for (map<string, vector<string>>::iterator it = villagerColors.begin(); 
@@ -56,6 +57,26 @@ int main() {
     cout << "\nSize before clear: " << villagerColors.size() << endl;
     villagerColors.clear();
     cout << "Size after clear: " << villagerColors.size() << endl;
-*/
+
+    while()
     return 0;
+}
+
+int menu() {
+    int user_choice = 0;
+    cout << "1. Add Villager" << endl;
+    cout << "2. Delete Villager" << endl;
+    cout << "3. Increase Friendship" << endl;
+    cout << "4. Decrease Friendship" << endl;
+    cout << "5. Search for Villager" << endl;
+    cout << "6. Exit" << endl;
+    cout << "Your choice: ";
+
+    while(!(cin>>user_choice)) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "\nInvalid input. Enter a number 1-6: ";
+    }
+
+    return user_choice;
 }
